@@ -13,8 +13,9 @@ Android, iOS.
 - CarouselView.
 - Custom Fonts.
 - Lottie.
+- Shell.
 - Video Player.
 
 ### Screenshots
 
-<img src="images/carouselview-challenge.gif" Width="250" />
+<img src="images/carouselview-challenge1.gif" Width="250" />
