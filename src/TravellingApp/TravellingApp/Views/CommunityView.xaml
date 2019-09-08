@@ -168,6 +168,8 @@
                 <CarouselView.ItemsLayout>
                     <ListItemsLayout
                         Orientation="Horizontal"
+                        SnapPointsType="Mandatory"
+                        SnapPointsAlignment="Start"
                         ItemSpacing="12"/>
                 </CarouselView.ItemsLayout>
                 <CarouselView.Behaviors>
