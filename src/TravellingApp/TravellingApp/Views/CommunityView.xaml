@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:videoplayer="clr-namespace:Octane.Xamarin.Forms.VideoPlayer;assembly=Octane.Xamarin.Forms.VideoPlayer"
+             xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:behaviors="clr-namespace:TravellingApp.Behaviors"
+             xmlns:xamanimation="clr-namespace:Xamanimation;assembly=Xamanimation"
+             mc:Ignorable="d"
+             x:Class="TravellingApp.Views.CommunityView"
+             Title="Community">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style x:Key="MostRecentStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsSemiBold}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+
+            <Style x:Key="SubTitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsSemiBold}" />
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="Margin" Value="12, 0" />
+            </Style>
+
+            <Style x:Key="DateStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsMedium}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="Margin" Value="12, 12, 0, 0" />
+            </Style>
+
+            <Style x:Key="PostTitleStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsSemiBold}" />
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="WidthRequest" Value="100" />
+                <Setter Property="Margin" Value="12, 12, 12, 6" />
+            </Style>
+
+            <Style x:Key="PostDateStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsMedium}" />
+                <Setter Property="FontSize" Value="8" />
+                <Setter Property="TextColor" Value="{StaticResource BlackColor}" />
+                <Setter Property="Margin" Value="12, 0, 12, 12" />
+            </Style>
+
+            <Style x:Key="FilterStyle" TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}" />
+                <Setter Property="FontSize" Value="10" />
+                <Setter Property="TextColor" Value="#606467" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0, 18" />
+            </Style>
+
+            <Style x:Key="SelectedFilterStyle" TargetType="Label" BasedOn="{StaticResource FilterStyle}">
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <DataTemplate x:Key="PostItemTemplate">
+                <pancakeview:PancakeView
+                    BackgroundColor="{StaticResource WhiteColor}"
+                    CornerRadius="6">
+                    <Grid
+                        RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="130" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Image 
+                            Grid.Row="0"
+                            Aspect="AspectFill"
+                            Source="{Binding Image}"/>
+                        <Label 
+                            Grid.Row="1" 
+                            Text="{Binding SubTitle}"
+                            Style="{StaticResource PostTitleStyle}"/>
+                        <Label 
+                            Grid.Row="2"
+                            Text="{Binding Date}"
+                            Style="{StaticResource PostDateStyle}"/>
+                        <Label />
+                    </Grid>
+                </pancakeview:PancakeView>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Shell.TitleView>
+        <Grid>
+            <Label 
+                Text="MOST RECENT"
+                Style="{StaticResource MostRecentStyle}"/>
+        </Grid>
+    </Shell.TitleView>
+    <Grid>
+        <!-- BACKGROUND VIDEO -->
+        <videoplayer:VideoPlayer
+            AutoPlay="True"
+            DisplayControls="False"
+            Repeat="True"
+            Volume="0"
+            FillMode="Resize"
+            Source="{Binding CurrentPost.Video}"/>
+        <!-- BACKGROUND GRADIENT -->
+        <pancakeview:PancakeView
+            BackgroundGradientAngle="180"
+            BackgroundGradientStartColor="{StaticResource BlackColor}"
+            BackgroundGradientEndColor="Transparent"/>
+        <Grid>
+            <Grid.Behaviors>
+                <xamanimation:EntranceTransition 
+                    Duration="1000" />
+            </Grid.Behaviors>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <!-- HEADER INFO -->
+            <Grid
+                Grid.Row="0" 
+                HorizontalOptions="Start"
+                WidthRequest="250"
+                Margin="12, 24, 12, 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Label 
+                    Grid.Row="0"
+                    Text="{Binding CurrentPost.Title}"
+                    Style="{StaticResource SubTitleStyle}"/>
+                <BoxView 
+                    Grid.Row="1"
+                    Opacity="0.5"
+                    HorizontalOptions="Start"
+                    HeightRequest="2"
+                    WidthRequest="60"
+                    Color="{StaticResource WhiteColor}"
+                    Margin="12, 0"/>
+            </Grid>
+            <!-- DATE -->
+            <Grid
+                Grid.Row="1"
+                Margin="12, 0, 12, 0">
+                <Label 
+                    Text="{Binding CurrentPost.Date}"
+                    Style="{StaticResource DateStyle}"/>
+            </Grid>
+            <!-- CAROUSEL POSTS -->
+            <CarouselView 
+                Grid.Row="2"
+                Position="0"
+                PeekAreaInsets="0, 0, 600, 0"
+                CurrentItem="{Binding CurrentPost, Mode=TwoWay}"
+                ItemsSource="{Binding Posts}"
+                ItemTemplate="{StaticResource PostItemTemplate}"
+                Margin="12, 24, 0, 0">
+                <CarouselView.ItemsLayout>
+                    <ListItemsLayout
+                        Orientation="Horizontal"
+                        ItemSpacing="12"/>
+                </CarouselView.ItemsLayout>
+                <CarouselView.Behaviors>
+                    <behaviors:CarouselViewScrollBehavior 
+                        x:Name="CarouselScroll" />
+                </CarouselView.Behaviors>
+            </CarouselView>
+            <!-- FILTER -->
+            <Grid
+                Grid.Row="3"
+                Margin="60, 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label
+                    Grid.Column="0"
+                    Text="ALL"
+                    Style="{StaticResource SelectedFilterStyle}"/>
+                <Label 
+                    Grid.Column="1"
+                    Text="MENS"
+                    Style="{StaticResource FilterStyle}"/>
+                <Label 
+                    Grid.Column="2"
+                    Text="WOMENS"
+                    Style="{StaticResource FilterStyle}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>

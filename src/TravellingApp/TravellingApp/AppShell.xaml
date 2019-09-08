@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+       xmlns:local="clr-namespace:TravellingApp.Views"
+       mc:Ignorable="d"
+       x:Class="TravellingApp.AppShell"
+       FlyoutBehavior="Disabled">
+    <Shell.Resources>
+        
+        <Style TargetType="Tab">
+            <Setter Property="Shell.BackgroundColor" 
+                    Value="{StaticResource BlackColor}" />
+            <Setter Property="Shell.ForegroundColor" 
+                    Value="{StaticResource WhiteColor}" />
+            <Setter Property="Shell.TitleColor" 
+                    Value="{StaticResource WhiteColor}" />
+            <Setter Property="Shell.TabBarBackgroundColor" 
+                    Value="{StaticResource WhiteColor}" />
+            <Setter Property="Shell.TabBarTitleColor" 
+                    Value="{StaticResource TabBarTextColor}" />
+            <Setter Property="Shell.UnselectedColor" 
+                    Value="{StaticResource TabBarUnselectedColor}" />
+        </Style>
+        
+    </Shell.Resources>
+    <TabBar>
+        <Tab
+            Icon="shop.png"
+            Title="Shop">
+            <ShellContent>
+                <local:ShopView />
+            </ShellContent>
+        </Tab>
+        <Tab         
+            Icon="position.png"
+            Title="Stores">
+            <ShellContent>
+                <local:StoresView />
+            </ShellContent>
+        </Tab>
+        <Tab    
+            Icon="community.png"
+            Title="Social"
+            >
+            <ShellContent>
+                <local:CommunityView />
+            </ShellContent>
+        </Tab>
+        <Tab    
+            Icon="bag.png"
+            Title="Bag">
+            <ShellContent>
+                <local:BagView />
+            </ShellContent>
+        </Tab>
+        <Tab                
+            Icon="me.png"
+            Title="Me">
+            <ShellContent>
+                <local:MeView />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>
