@@ -70,7 +70,7 @@
                     <Grid
                         RowSpacing="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="130" />
+                            <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
@@ -121,7 +121,7 @@
             </Grid.Behaviors>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="50" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
@@ -150,8 +150,13 @@
             </Grid>
             <!-- DATE -->
             <Grid
-                Grid.Row="1"
-                Margin="12, 0, 12, 0">
+                Grid.Row="1">
+                <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="12, 0, 12, 0" />
+                        <On Platform="Android" Value="12, 0, 12, 24" />
+                    </OnPlatform>
+                </Grid.Margin>
                 <Label 
                     Text="{Binding CurrentPost.Date}"
                     Style="{StaticResource DateStyle}"/>
@@ -159,12 +164,22 @@
             <!-- CAROUSEL POSTS -->
             <CarouselView 
                 Grid.Row="2"
-                Position="0"
-                PeekAreaInsets="0, 0, 600, 0"
                 CurrentItem="{Binding CurrentPost, Mode=TwoWay}"
                 ItemsSource="{Binding Posts}"
                 ItemTemplate="{StaticResource PostItemTemplate}"
-                Margin="12, 24, 0, 0">
+                VerticalOptions="End">
+                <CarouselView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="12, 48, 0, 0" />
+                        <On Platform="Android" Value="12, 24, 0, 0" />
+                    </OnPlatform>
+                </CarouselView.Margin>
+                <CarouselView.PeekAreaInsets>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0, 0, 200, 0" />
+                        <On Platform="Android" Value="0, 0, 600, 0" />
+                    </OnPlatform>
+                </CarouselView.PeekAreaInsets>
                 <CarouselView.ItemsLayout>
                     <ListItemsLayout
                         Orientation="Horizontal"

@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -111,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravellingApp\TravellingApp.csproj">
-      <Project>{6A2D0C8D-38AE-4339-96B3-A3FBD9F43612}</Project>
+      <Project>{C0850E68-7D52-46E5-9FE9-53979749E1D9}</Project>
       <Name>TravellingApp</Name>
     </ProjectReference>
   </ItemGroup>
