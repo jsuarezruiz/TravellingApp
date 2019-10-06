@@ -19,3 +19,7 @@ Android, iOS.
 ### Screenshots
 
 <img src="images/carouselview-challenge1.gif" Width="250" /> <img src="images/carouselview-challenge2.gif" Width="250" />
+
+## Copyright and license
+
+Code released under the [MIT license](https://opensource.org/licenses/MIT).
