@@ -187,10 +187,6 @@
                         SnapPointsAlignment="Start"
                         ItemSpacing="12"/>
                 </CarouselView.ItemsLayout>
-                <CarouselView.Behaviors>
-                    <behaviors:CarouselViewScrollBehavior 
-                        x:Name="CarouselScroll" />
-                </CarouselView.Behaviors>
             </CarouselView>
             <!-- FILTER -->
             <Grid
